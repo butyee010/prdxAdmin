@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss,SSS} %-5level[%t] - %c{1}: %msg%n</Property>
+		<Property name="APPS_LOG_PATH">D:/log/a</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console-Appender" target="SYSTEM_OUT">
+			<PatternLayout>
+				<pattern>${LOG_PATTERN}</pattern>
+			</PatternLayout>
+		</Console>
+		
+		<!-- <RollingFile name="BookingDirectApiDailyRolling" fileName="${sys:APPS_LOG_PATH}/BookingDirect_Api.log"
+			filePattern="${sys:APPS_LOG_PATH}/BookingDirect_Api-%d{yyyy-MM-dd-HH}.log.zip">
+			<PatternLayout>
+				<pattern>${LOG_PATTERN}</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+			<DefaultRolloverStrategy compressionLevel="9"/>
+		</RollingFile> -->
+
+	</Appenders>
+	<Loggers>
+	
+		<!-- <Logger name="com.bookingdirect.api" level="info" additivity="false">
+			<AppenderRef ref="BookingDirectApiDailyRolling" />
+		</Logger> -->
+		
+		<Root level="info">
+            <AppenderRef ref="Console-Appender" />
+        </Root>
+	
+	</Loggers>
+</Configuration>
