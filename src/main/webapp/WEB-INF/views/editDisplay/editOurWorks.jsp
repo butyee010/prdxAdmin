@@ -11,12 +11,12 @@
 %>
 
 <section class="our-works">
-	<div class="row button-box">
-	        <div class="box">
-	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_OUR_WORKS')">Edit</button>
-	        </div>
-	    </div>
-	    <hr/>
+	<nav aria-label="breadcrumb">
+	        <ol class="breadcrumb">
+	            <li class="breadcrumb-item"><a href="#" onclick="menuPortal.menuPortalAction('PAGE_OUR_WORKS', 'back')">Our Works</a></li>
+	            <li class="breadcrumb-item active" aria-current="page">Edit Our Works</li>
+	        </ol>
+	    </nav>
 	<% boolean top = true; %>
 	<c:if test="${not empty ourWorksMap}">
 		<c:forEach var="ourWorksItemMap" items="${ourWorksMap}">
@@ -44,7 +44,7 @@
 	</c:if>
 	<div class="row button-box">
 	        <div class="box">
-	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_OUR_WORKS')">Edit</button>
+	            <button type="button" class="btn btn-primary" onclick="ourWorks.openDialogEditOurWorks()">Submit</button>
 	        </div>
 	    </div>
 </section>

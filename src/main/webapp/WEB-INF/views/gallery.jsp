@@ -9,9 +9,14 @@
 	Random rn = new Random();
 	int random = rn.nextInt(1000)+1;
 %>
-<script type="text/javascript" src="${resources}/js/app/portal/gallery.js?r=<%=rn%>"></script>
 
 <section class="gallery-container">
+	   <div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_GALLERY')">Edit</button>
+	        </div>
+	    </div>
+	    <hr/>
         <div class="tz-gallery">
             <div class="row">
 	            <c:if test="${not empty galleryList}">
@@ -31,4 +36,9 @@
 				</c:if>
             </div>
         </div>
+        <div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_GALLERY')">Edit</button>
+	        </div>
+	    </div>
     </section>

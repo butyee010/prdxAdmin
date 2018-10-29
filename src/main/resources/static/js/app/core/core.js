@@ -348,3 +348,43 @@ function closeLoading() {
 function resetWindow() {
 	window.scrollTo(0, 0);
 }
+
+function openDialog(option){
+	var o = $.extend({
+		headerEmpty: false,
+		footerEmpty: false,
+		title: '',
+		content: '',
+		footer: '', 
+		replaceid : '',
+		submit: function() {
+		},
+	}, option);
+	if (o.headerEmpty)
+		$('#mainDialog').find(".modal-header").empty();
+	
+	if (o.footerEmpty) 
+		$('#mainDialog').find(".modal-footer").empty();
+	
+	if (!!o.title)
+		$('#mainDialog').find(".modal-title").text(o.title);
+	
+	if (!!o.footer)
+		$('#mainDialog').find(".modal-footer").html(o.footer);
+	
+	$('#mainDialog').find(".modal-body").html(o.content);
+	
+	$("#dialogSubmit").unbind().bind("click", function(){
+		o.submit();
+	});
+	
+	$('#mainDialog').modal();
+}     
+
+function openDialogConfirm(title, submit){
+	openDialog({
+		title: title,
+		content: 'Are you save changes ?',
+		submit: submit
+	});
+}

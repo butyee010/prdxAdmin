@@ -5,12 +5,12 @@
 <spring:url value="resources/static" var="resources" />
 
 <section class="home">
-	<div class="row button-box">
-	        <div class="box">
-	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_HOME')">Edit</button>
-	        </div>
-	    </div>
-	    <hr/>
+	<nav aria-label="breadcrumb">
+	        <ol class="breadcrumb">
+	            <li class="breadcrumb-item"><a href="#" onclick="menuPortal.menuPortalAction('PAGE_HOME', 'back')">Home</a></li>
+	            <li class="breadcrumb-item active" aria-current="page">Edit Home</li>
+	        </ol>
+	    </nav>
     <section id="carouselPrdx" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
         	<c:if test="${not empty homeBean.carouselList}">
@@ -89,7 +89,7 @@
     </section>
     <div class="row button-box">
 	        <div class="box">
-	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_HOME')">Edit</button>
+	            <button type="button" class="btn btn-primary" onclick="home.openDialogEditHome()">Submit</button>
 	        </div>
 	    </div>
 </section>

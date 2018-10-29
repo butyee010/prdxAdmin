@@ -5,6 +5,12 @@
 <spring:url value="resources/static" var="resources" />
 
 <section class="services">
+	<div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_SERVICES')">Edit</button>
+	        </div>
+	    </div>
+	    <hr/>
 	<c:if test="${not empty serviceList}">
 		<c:forEach var="service" items="${serviceList}">
 		    <section class="row content section-content thumbnail" style="padding-top: 0">
@@ -18,4 +24,9 @@
 		    </section>
 	    </c:forEach>
 	</c:if>
+	<div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_SERVICES')">Edit</button>
+	        </div>
+	    </div>
 </section>

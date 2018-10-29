@@ -4,6 +4,12 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt"%>
 
 <section class="contact">
+	<div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_CONTACT')">Edit</button>
+	        </div>
+	    </div>
+	    <hr/>
     <div class="map-container">
         <div class="placeDiv">
             <div class="placecard__container">
@@ -38,6 +44,11 @@
             </p>
         </div>
     </section>
+    <div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-warning" onclick="menuEditPortal.editPortalAction('PAGE_CONTACT')">Edit</button>
+	        </div>
+	    </div>
 </section>
 
 <script type='text/javascript'>

@@ -3,6 +3,12 @@ var ourWorks = {
 	onLoad: function() {
 
 	},
+	
+	openDialogEditOurWorks: function() {
+		openDialogConfirm("Edit Our Works", function(){
+			console.log("click");
+		});
+	},
 
 	openSubOurWorks: function(topic) {
 		ajaxCall({

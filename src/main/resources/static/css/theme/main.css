@@ -127,7 +127,8 @@ body {
 }
  */
 .mainContent {
-  padding: 6.5rem 1rem; }
+  padding: 1.5rem 1rem 0rem; 
+ }
 
 .container {
   background-color: #fff;
@@ -155,10 +156,10 @@ body {
   padding: 0px 0px 3px 32px; }
 
 .page-footer {
-  background-color: #050505;
-  color: white;
+  border-top: 0.5px solid #80808085;
+  color: black;
   margin: 0;
-  padding: .5rem 1rem 2rem; }
+  padding: .5rem 1rem 0rem; }
 
 .carousel .carousel-item img {
   max-height: 400px; }
@@ -557,3 +558,50 @@ body {
     height: 200px !important;
     margin-left: 5rem !important;
   }
+  
+  
+.button-box {
+    direction: rtl;
+}
+
+.button-box .box {
+   padding: 0.5rem 1rem;
+}
+
+.button-box .box button {
+	min-width: 100px;
+}
+
+.app-menu-side {
+    position: fixed;
+    max-width: 16.5%;
+    min-width: 16.5%;
+    word-break: break-all;
+    overflow: auto;
+    min-height: 100%;
+    background-color: white !important;
+    border-right: 0.5px solid #80808085;
+    padding: .5rem 1rem;
+    z-index: 1001;
+}
+
+.navbar-nav { 
+    margin-left: 2.2rem;
+}
+
+.navbar-nav li { 
+    cursor: pointer;
+}
+
+.app-container {
+    margin-left: 17.5%;
+}
+
+hr {
+      margin-top: 0 !important;
+}
+
+.btn-delete {
+	cursor: pointer;
+	color: red;
+}

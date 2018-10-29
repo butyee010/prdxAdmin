@@ -1,9 +1,15 @@
 package com.prdx.admin.config;
 
+import javax.servlet.MultipartConfigElement;
+
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.MultipartFilter;
 
 import com.prdx.admin.constant.PortalConstants;
 
@@ -20,14 +26,12 @@ public class BeanConfig {
 		return messageSource;
 	}
 	
-	/*@Bean(name = "multipartResolver")
+	@Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        String uploadSize = ConfigConstants.getPromptpayAdjustUploadMaxSize();
+        String uploadSize = "52428800";
         if (StringUtils.isNotBlank(uploadSize))
         	resolver.setMaxUploadSizePerFile(Long.valueOf(uploadSize)); 
-        else 
-        	resolver.setMaxUploadSizePerFile(PROMPT_PAY_ADJUST_UPLOAD_MAX_SIZE); 
         return resolver;
     }
 
@@ -36,6 +40,5 @@ public class BeanConfig {
             MultipartFilter multipartFilter = new MultipartFilter();
         multipartFilter.setMultipartResolverBeanName("multipartResolver");
         return multipartFilter;
-    }*/
-	
+    }
 }
