@@ -104,5 +104,90 @@ var gallery = {
 				menuPortal.menuPortalAction('PAGE_GALLERY', 'back');
 			}
 		});
-	}
+	},
+	
+	//////////////////////////////////////////////////////////////
+	
+	onLoadEditGalleryJssor: function() {
+		gallery.eventChangeGalleryGroupEditJssor();
+	},
+	
+	eventChangeGalleryGroupEditJssor: function() {
+		$("select[name=galleryGroup]").on('change', function() {
+			gallery.changeGalleryGroupEditJssor(this.value);
+		});
+		
+		gallery.changeGalleryGroupEditJssor($("select[name=galleryGroup]").val());
+	},
+	
+	changeGalleryGroupEditJssor: function(galleryGroup) {
+		ajaxCall({
+			type: "POST",
+			url: "gallery/editGalleryJssorChangeGalleryGroup",
+			data: {topic: galleryGroup},
+			replaceid: "#galleryJssorTable",
+			onSuccess: function() {
+				
+			},
+		});
+	},
+	
+	addGalleryJssor: function() {
+		var i = $("#galleryJssorTable tbody tr").length + 1;
+		var newRow = 	`<tr>
+							<td align="center" class="count-index">`+i+`</td>
+							<td>
+								<input type="file" name="fileImage" value="" />
+							</td>
+							<td align="center"><i class="material-icons btn-delete"
+								onclick="gallery.deleteGalleryJssor(this)">delete</i></td>
+						</tr>`;
+		$("#galleryJssorTable tbody").append(newRow);
+	},
+	
+	deleteGalleryJssor: function(elm) {
+		$(elm).parents("tr").remove();
+		
+		jQuery.each($("#galleryJssorTable tbody tr"), function(i, tr) {
+			$(tr).find(".count-index").html((i+1));
+		});
+		
+	},
+	
+	openDialogEditGalleryJssor: function() {
+		openDialogConfirm("Edit Gallery Jssor", function(){
+			gallery.galleryJssorUploadFile();
+		});
+	},
+	
+	galleryJssorUploadFile: function() {
+		var form = $("#editGalleryJssorForm")[0];
+		var formData = new FormData();
+		
+		var jsonData = {};
+		var items = $("#galleryJssorTable tbody tr");
+		
+		jQuery.each($("#galleryJssorTable tbody tr"), function(i, tr) {
+			var file = $(tr).find('input[name="fileImage"]')[0].files[0];
+			if (!!file) {
+				formData.append("fileImageList["+i+"].fileName", file.name);
+				formData.append("fileImageList["+i+"].file", file);
+			}
+		});
+		var galleryGroup = $("select[name=galleryGroup]").val();
+		formData.append("topic", galleryGroup);
+		$.ajax({
+			url: form.action,
+			method: form.method,
+			type: 'POST',
+			processData: false,
+			contentType: false,
+			data: formData,
+			success: function(data) {
+				$('#mainDialog').modal('toggle');
+				menuPortal.menuPortalAction('PAGE_GALLERY', 'back');
+			}
+		});
+	},
+	
 };

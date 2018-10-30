@@ -31,4 +31,39 @@ var ourWorks = {
 			},
 		});
 	},
+	
+	//tab
+	
+	tabOurWorksGroup: function() {
+		ajaxCall({
+			type: "POST",
+			url: "ourWorks/editOurWorksGroup",
+			replaceid: "#ourworksGroup",
+			onSuccess: function() {
+				
+			},
+		});
+	},
+	
+	tabOurWorksSubGroup: function() {
+		ajaxCall({
+			type: "POST",
+			url: "ourWorks/editOurWorksSubGroup",
+			replaceid: "#ourworksSubGroup",
+			onSuccess: function() {
+				
+			},
+		});
+	},
+	
+	tabOurWorksJssor: function() {
+		ajaxCall({
+			type: "POST",
+			url: "ourWorks/editOurWorksJssor",
+			replaceid: "#ourworksJssor",
+			onSuccess: function() {
+				
+			},
+		});
+	},
 };

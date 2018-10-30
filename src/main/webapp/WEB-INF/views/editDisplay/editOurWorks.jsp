@@ -17,34 +17,26 @@
 	            <li class="breadcrumb-item active" aria-current="page">Edit Our Works</li>
 	        </ol>
 	    </nav>
-	<% boolean top = true; %>
-	<c:if test="${not empty ourWorksMap}">
-		<c:forEach var="ourWorksItemMap" items="${ourWorksMap}">
-			<% if (top) { %>
-				<section class="row content section-content" style="padding-top: 0">
-			<% } else { %>
-				<section class="row content section-content">
-			<% } %>
-				<c:forEach var="ourWorks" items="${ourWorksItemMap.value}">
-					<div class="col-sm-4 thumbnail">
-						<div>
-							<img class="d-block w-100 img-radius" onclick="ourWorks.openSubOurWorks('${ourWorks.header}')" src="${ourWorks.imgPath}" alt="${ourWorks.imgName}">
-						</div>
-						<div class="content">
-							<label class="big-font">${ourWorks.header}</label>
-						</div>
-						<div class="normal-font padding-left">
-							<p>${ourWorks.content}</p>
-						</div>
-					</div>
-				</c:forEach>
-			</section>
-			<% top = false; %>
-		</c:forEach>
-	</c:if>
-	<div class="row button-box">
-	        <div class="box">
-	            <button type="button" class="btn btn-primary" onclick="ourWorks.openDialogEditOurWorks()">Submit</button>
-	        </div>
-	    </div>
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link active" data-toggle="tab" href="#ourworksGroup" onclick="ourWorks.tabOurWorksGroup()">Our Works</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#ourworksSubGroup" onclick="ourWorks.tabOurWorksSubGroup()">Our Works Sub</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" data-toggle="tab" href="#ourworksJssor" onclick="ourWorks.tabOurWorksJssor()">Our Works Jssor</a>
+	  </li>
+	</ul>
+	
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="ourworksGroup"></div>
+	  <div class="tab-pane fade" id="ourworksSubGroup"></div>
+	  <div class="tab-pane fade" id="ourworksJssor"></div>
+	</div>
 </section>
+
+<script type='text/javascript'>
+	ourWorks.tabOurWorksGroup();
+</script>
