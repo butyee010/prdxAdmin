@@ -10,41 +10,26 @@
 	int random = rn.nextInt(1000)+1;
 %>
 
-<section class="our-works">
-	<nav aria-label="breadcrumb">
-	        <ol class="breadcrumb">
-	            <li class="breadcrumb-item"><a href="#" onclick="menuPortal.menuPortalAction('PAGE_OUR_WORKS', 'back')">Our Works</a></li>
-	            <li class="breadcrumb-item active" aria-current="page">Edit Our Works</li>
-	        </ol>
-	    </nav>
-	<% boolean top = true; %>
-	<c:if test="${not empty ourWorksMap}">
-		<c:forEach var="ourWorksItemMap" items="${ourWorksMap}">
-			<% if (top) { %>
-				<section class="row content section-content" style="padding-top: 0">
-			<% } else { %>
-				<section class="row content section-content">
-			<% } %>
-				<c:forEach var="ourWorks" items="${ourWorksItemMap.value}">
-					<div class="col-sm-4 thumbnail">
-						<div>
-							<img class="d-block w-100 img-radius" onclick="ourWorks.openSubOurWorks('${ourWorks.header}')" src="${ourWorks.imgPath}" alt="${ourWorks.imgName}">
-						</div>
-						<div class="content">
-							<label class="big-font">${ourWorks.header}</label>
-						</div>
-						<div class="normal-font padding-left">
-							<p>${ourWorks.content}</p>
-						</div>
-					</div>
+<form class="form" style="padding-top: 1rem;" action="ourWorks/submitEditOurWorksJssor" id="editOurWorksJssorForm" enctype="multipart/form-data" method="POST">
+	<div class="col-sm-12 form-group">
+		<label>Select Our Works Group</label>
+		<select class="form-control" name="ourworksGroup">
+			<c:if test="${not empty ourWorksMap}">
+				<c:forEach var="ourWorksItemMap" items="${ourWorksMap}">
+					<c:forEach var="ourWorks" items="${ourWorksItemMap.value}">
+						<option value="${ourWorks.header}">${ourWorks.header}</option>
+					</c:forEach>
 				</c:forEach>
-			</section>
-			<% top = false; %>
-		</c:forEach>
-	</c:if>
-	<div class="row button-box">
-	        <div class="box">
-	            <button type="button" class="btn btn-primary" onclick="ourWorks.openDialogEditOurWorks()">Submit</button>
-	        </div>
-	    </div>
-</section>
+			</c:if>
+		</select>
+	</div>
+	<div class="col-sm-12 form-group">
+		<label>Select Our Works Sub Group</label>
+		<select class="form-control" name="ourworksSubGroup"></select>
+	</div>
+	<div id="ourworksJssorContent"></div>
+</form>
+
+<script type="text/javascript">
+	ourWorks.onLoadEditOurWorksJssor();
+</script>

@@ -41,9 +41,6 @@ var services = {
 		var form = $("#editServiceForm")[0];
 		var formData = new FormData();
 		
-		var jsonData = {};
-		var items = $("#editServiceForm tbody tr");
-		
 		jQuery.each($("#editServiceForm tbody tr"), function(i, tr) {
 			var header = $(tr).find('input[name="header"]').val();
 			var content = $(tr).find('textarea[name="content"]').val();

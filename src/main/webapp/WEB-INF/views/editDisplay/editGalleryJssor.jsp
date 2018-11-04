@@ -8,6 +8,7 @@
 
 <form class="form" style="padding-top: 1rem;" action="gallery/submitEditJssor" id="editGalleryJssorForm" enctype="multipart/form-data" method="POST">
 	<div class="col-sm-12 form-group">
+		<label>Select Gallery Group</label>
 		<select class="form-control" name="galleryGroup">
 			<c:if test="${not empty galleryList}">
 				<c:forEach var="gallery" items="${galleryList}">

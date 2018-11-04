@@ -11,82 +11,97 @@
 	            <li class="breadcrumb-item active" aria-current="page">Edit Home</li>
 	        </ol>
 	    </nav>
-    <section id="carouselPrdx" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-        	<c:if test="${not empty homeBean.carouselList}">
-				<% int i = 0; %>
-				<c:set var="frist" value="true"/>
-				<c:forEach var="carousel" items="${homeBean.carouselList}">
-					<c:choose>
-						<c:when test="${frist}">
-							<li data-target="#carouselPrdx" data-slide-to="<%=i%>" class="active"></li>
-						</c:when>
-						<c:otherwise>
-							<li data-target="#carouselPrdx" data-slide-to="<%=i%>"></li>
-						</c:otherwise>
-						</c:choose>
-				<c:set var="frist" value="false"/>
-				<% i++; %>
-				</c:forEach>
-			</c:if>
-        </ol>
-        <div class="carousel-inner">
-        	<c:if test="${not empty homeBean.carouselList}">
-				<c:set var="frist" value="true"/>
-				<c:forEach var="carousel" items="${homeBean.carouselList}">
-					<c:choose>
-						<c:when test="${frist}">
-							<div class="carousel-item active">
-				                <img class="d-block w-100" src="${carousel.imgPath}" alt="${carousel.imgName}">
-				            </div>
-						</c:when>
-						<c:otherwise>
-							<div class="carousel-item">
-				                 <img class="d-block w-100" src="${carousel.imgPath}" alt="${carousel.imgName}">
-				            </div>
-						</c:otherwise>
-					</c:choose>
-				<c:set var="frist" value="false"/>
-				</c:forEach>
-			</c:if>
-        </div>
-        <a class="carousel-control-prev" href="#carouselPrdx" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselPrdx" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </section>
-
-    <section class="row content-padding content-margin-top">
-        <div class="col-sm-12 section-header text-center">
-            ${homeBean.headerRef1}
-        </div>
-        <div class="col-sm-12 text-center">
-            ${homeBean.contentRef1}
-        </div>
-    </section>
-
-    <section class="row content-padding content-margin-top">
-        <div class="col-sm-12">
-            <img class="d-block w-100 img-radius" style="height: ${homeBean.imgHightSizeRef2};" src="${homeBean.imgPathRef2}" alt="${homeBean.imgNameRef2}">
-        </div>
-    </section>
-
-    <section class="row content">
-        <div class="col-sm-6">
-            <img class="d-block w-100 img-radius" src="${homeBean.imgPathRef3}"
-                alt="${homeBean.imgNameRef3}">
-        </div>
-        <div class="col-sm-6">
-            <h3 class="pb-1 mb-2 border-bottom"><span class="text-primary">${homeBean.headerRef3}</span></h3>
-            <div class="mb-3">
-                <div>${homeBean.contentRef3}</div>
-            </div>
-        </div>
-    </section>
+	    
+	<form class="form" action="home/submitEdit" id="editHomeForm" enctype="multipart/form-data" method="POST">
+		<!-- section 1 carouselPrdx -->
+		<label>Section 1</label>
+		<div class="row button-box">
+	        <div class="box">
+	            <button type="button" class="btn btn-primary" onclick="home.addImageRef1()">Add</button>
+	        </div>
+	    </div>
+		<table id="homeRef1Table" class="table table-striped table-responsive" cellspacing="0" width="100%">
+			<thead>
+				<tr align="center">
+					<th width="10%">No.</th>
+					<th width="35%">Image</th>
+					<th width="5%">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:if test="${not empty homeBean.carouselList}">
+					<% int i = 1; %>
+					<c:forEach var="carousel" items="${homeBean.carouselList}">
+						<tr>
+							<td align="center" class="count-index"><%= i++ %></td>
+							<td>
+								<div>
+									<label>Images Name: ${carousel.imgName}</label>
+								</div>
+								<hr/>
+								<input type="file" name="homeRef1FileImage" value=""/></td>
+							<td align="center"><i class="material-icons btn-delete" onclick="home.deleteImageRef1(this)">delete</i></td>
+						</tr>
+				    </c:forEach>
+				</c:if>
+			</tbody>
+		</table>
+	    <section class="row">
+	    	<div class="col-sm-12 form-group">
+	        	<input type="text" name="headerRef1" class="form-control" value="${homeBean.headerRef1}"/>
+	            <p><textarea rows="5" cols="50" class="form-control" name="contentRef1">${homeBean.contentRef1}</textarea></p>
+	        </div>
+	    </section>
+		<br/>
+		<hr/>
+		<!-- section 2 Process with Paradise -->
+		<label>Section 2</label>
+	    <table id="homeRef2Table" class="table table-striped" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th width="100%">Image</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<div>
+							<label>Images Name: ${homeBean.imgNameRef2}</label>
+						</div>
+						<hr/>
+						<input type="file" name="homeRef2FileImage" value=""/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<hr/>
+		<label>Section 3</label>
+		<!-- section 3 Why Paradise -->
+		<table id="homeRef3Table" class="table table-striped table-responsive" cellspacing="0" width="100%">
+			<thead>
+				<tr align="center">
+					<th width="30%">Topic Name</th>
+					<th width="30%">Topic Desc</th>
+					<th width="40%">Image</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" name="headerRef3" class="form-control" value="${homeBean.headerRef3}"/></td>
+					<td><textarea rows="5" cols="50" name="contentRef3" class="form-control">${homeBean.contentRef3}</textarea></td>
+					<td>
+						<div>
+							<label>Images Name: ${homeBean.imgNameRef3}</label>
+						</div>
+						<hr/>
+						<input type="file" name="homeRef3FileImage" value=""/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</form>
+	    
     <div class="row button-box">
 	        <div class="box">
 	            <button type="button" class="btn btn-primary" onclick="home.openDialogEditHome()">Submit</button>
@@ -95,9 +110,5 @@
 </section>
 
 <script type='text/javascript'>
-    $(document).ready(function () {
-        $('#carouselPrdx').carousel({
-            interval: 2000
-        });
-    });
+    
 </script>

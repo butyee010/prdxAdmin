@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.prdx.admin.bean.form.GalleryForm;
+import com.prdx.admin.bean.form.OurWorksForm;
 import com.prdx.admin.bean.form.ServicesForm;
 
 import lombok.Data;
@@ -12,5 +13,7 @@ import lombok.Data;
 public class DummyBean {
 	List<ServicesForm> serviceForm = new ArrayList<>();
 	List<GalleryForm> galleryForm = new ArrayList<>();
+	
+	List<OurWorksForm> ourWorksForm = new ArrayList<>();
 	
 }
