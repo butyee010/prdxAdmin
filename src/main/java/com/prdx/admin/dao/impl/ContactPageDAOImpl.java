@@ -24,4 +24,9 @@ public class ContactPageDAOImpl implements ContactPageDAO{
 		}
 		return result;
 	}
+	@Override
+	public void setValue(String key, String value) throws Exception {
+		String sql = SQLConstants.SQL_SET_VALUE_CONTACT_PAGE_BY_KEY;
+		jdbcTemplate.update(sql, new Object[]{value, key});
+	}
 }

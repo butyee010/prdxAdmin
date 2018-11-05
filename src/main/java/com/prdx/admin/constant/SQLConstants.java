@@ -46,4 +46,8 @@ public class SQLConstants {
 
 	public static final String SQL_FIND_ALL_PROPERTIES_MAPPING = " select properties_key AS 'key', properties_value AS 'value', properties_group as 'group' from properties_mapping ";
 
+	//edit
+	public static final String SQL_SET_VALUE_ABOUT_PAGE_BY_KEY = " update about_page set AP_VALUE = ? where AP_KEY = ? ";
+	
+	public static final String SQL_SET_VALUE_CONTACT_PAGE_BY_KEY = " update contact_page set CP_VALUE = ? where CP_KEY = ? ";
 }
