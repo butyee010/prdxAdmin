@@ -35,4 +35,15 @@ public class HomePageDAOImpl implements HomePageDAO{
 		return result;
 	}
 
+	@Override
+	public void setValue(String key, String value, boolean insert) throws Exception {
+		String sql = "";
+		if(insert) {
+			sql = SQLConstants.SQL_SET_INSERT_VALUE_HOME_PAGE_BY_KEY;
+		}else {
+			sql = SQLConstants.SQL_SET_VALUE_HOME_PAGE_BY_KEY;
+		}
+		jdbcTemplate.update(sql, new Object[]{value, key});
+	}
+
 }

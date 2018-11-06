@@ -50,4 +50,10 @@ public class SQLConstants {
 	public static final String SQL_SET_VALUE_ABOUT_PAGE_BY_KEY = " update about_page set AP_VALUE = ? where AP_KEY = ? ";
 	
 	public static final String SQL_SET_VALUE_CONTACT_PAGE_BY_KEY = " update contact_page set CP_VALUE = ? where CP_KEY = ? ";
+	
+	public static final String SQL_SET_VALUE_SERVICES_PAGE_BY_KEY = " update services_page set SP_VALUE = ? where SP_KEY = ? ";
+	
+	public static final String SQL_SET_VALUE_HOME_PAGE_BY_KEY = " update home_page set HP_VALUE = ? where HP_KEY = ? ";
+	
+	public static final String SQL_SET_INSERT_VALUE_HOME_PAGE_BY_KEY = " insert into home_page (HP_VALUE, HP_KEY) values (?, ?) ";
 }
