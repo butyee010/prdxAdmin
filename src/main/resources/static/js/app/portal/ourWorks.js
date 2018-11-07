@@ -190,6 +190,10 @@ var ourWorks = {
 		var items = $("#editOurWorksSubGroupForm tbody tr");
 		
 		jQuery.each($("#editOurWorksSubGroupForm tbody tr"), function(i, tr) {
+			var header = $(tr).find('input[name="header"]').val();
+			var content = $(tr).find('textarea[name="content"]').val();
+			formData.append("topicList["+i+"].topic", header);
+			formData.append("topicList["+i+"].content", content);
 			var file = $(tr).find('input[name="fileImage"]')[0].files[0];
 			if (!!file) {
 				formData.append("fileImageList["+i+"].fileName", file.name);

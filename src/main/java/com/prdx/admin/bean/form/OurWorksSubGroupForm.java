@@ -10,6 +10,8 @@ import lombok.Data;
 public class OurWorksSubGroupForm {
 
 	private String topic;
-	private List<MultipartFileForm> fileImageList;
 	
+	
+	private List<MultipartFileForm> fileImageList;
+	private List<TopicForm> topicList;
 }

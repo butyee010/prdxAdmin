@@ -1,42 +1,27 @@
 package com.prdx.admin.controller;
-/*package com.prdx.web.controller;
-
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.ktb.anyid.adjust.portal.bean.MenuBean;
-import com.ktb.anyid.adjust.portal.bean.UserInfo;
-import com.ktb.anyid.adjust.portal.helper.ApplicationHelper;
-import com.ktb.anyid.adjust.portal.helper.RepositoryHelper;
-import com.ktb.anyid.adjust.portal.log.LogConstants;
-import com.ktb.anyid.adjust.portal.log.LogUtil;
-import com.ktb.anyid.adjust.portal.log.LogUtilImpl;
-import com.ktb.anyid.adjust.portal.service.AuthenService;
-import com.ktb.anyid.adjust.portal.service.MenuService;
+import com.prdx.admin.helper.ApplicationHelper;
 
 @Controller
+@RequestMapping(value = "authen")
 public class AuthenticationController {
 
 	public static final String PAGE_LOGIN = "login";
 	public static final String PAGE_MAIN = "main";
 	
-	private LogUtil logger = LogUtilImpl.getLogger(LogConstants.LOG_AUTHEN);
-	
-	@Autowired
-	private AuthenService authenService;
-	
-	@Autowired
-	private MenuService menuService;
-	
+	private Logger logger = LogManager.getLogger(AuthenticationController.class);
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView indexGet(HttpServletRequest req) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
@@ -58,7 +43,7 @@ public class AuthenticationController {
 		HttpSession session = reqServlet.getSession();
 		String userName = "";
 		try {
-			userName = reqServlet.getParameter("username");
+			/*userName = reqServlet.getParameter("username");
 			String password = reqServlet.getParameter("password");
 			
 			String sessionKey = ApplicationHelper.getNewSessionKey(session.getId());
@@ -70,7 +55,7 @@ public class AuthenticationController {
 			modelAndView.addObject("sessionKey", user.getSessionId());
 			modelAndView.addObject("userInfo", user);
 			
-			RepositoryHelper.setUserInfo(session, user);
+			RepositoryHelper.setUserInfo(session, user);*/
 		}
         catch (Exception e) {
         	logger.error("AuthenticationController loginPost Exception userId: "+userName, e);
@@ -83,9 +68,9 @@ public class AuthenticationController {
 	public ModelAndView logout(HttpServletRequest reqServlet) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setView(new RedirectView(PAGE_LOGIN));
-		UserInfo user = RepositoryHelper.getUserInfo(reqServlet.getSession());
+//		UserInfo user = RepositoryHelper.getUserInfo(reqServlet.getSession());
 		try {
-			authenService.logout(user.getUserId());
+//			authenService.logout(user.getUserId());
 		}
         catch (Exception e) {
         	logger.error("AuthenticationController logout Exception: ", e);
@@ -95,4 +80,3 @@ public class AuthenticationController {
 	}
 
 }
-*/

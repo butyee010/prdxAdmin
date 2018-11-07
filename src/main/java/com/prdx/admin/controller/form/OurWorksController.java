@@ -147,7 +147,7 @@ public class OurWorksController {
 	
 	@RequestMapping(value = "changeOurWorksJssorSubGroup", method = { RequestMethod.POST })
 	public ModelAndView changeOurWorksSpecificSubGroup(HttpServletRequest reqServlet) {
-		ModelAndView modelAndView = new ModelAndView("editDisplay/sub/subEditOurWorksSubGroup");
+		ModelAndView modelAndView = new ModelAndView("editDisplay/sub/subEditOurWorksJssorSubGroup");
 		OurWorksSubJssorBean ourWorksSubJssorBean = new OurWorksSubJssorBean();
 		try {
 			String serviceName = reqServlet.getParameter("serviceName");

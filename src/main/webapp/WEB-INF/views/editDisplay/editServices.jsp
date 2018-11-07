@@ -12,19 +12,19 @@
 	        </ol>
 	    </nav>
 	<form class="form" action="services/submitEdit" id="editServiceForm" enctype="multipart/form-data" method="POST">
-		<div class="row button-box">
+		<!-- <div class="row button-box">
 	        <div class="box">
 	            <button type="button" class="btn btn-primary" onclick="services.addService()">Add</button>
 	        </div>
-	    </div>
+	    </div> -->
 		<table id="servicesTable" class="table table-striped table-responsive" cellspacing="0" width="100%">
 			<thead>
 				<tr align="center">
 					<th width="10%">No.</th>
 					<th width="20%">Service Name</th>
 					<th width="25%">Service Desc</th>
-					<th width="35%">Image</th>
-					<th width="5%">Delete</th>
+					<th width="40%">Image</th>
+					<!-- <th width="5%">Delete</th> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -41,7 +41,7 @@
 								</div>
 								<hr/>
 								<input type="file" name="fileImage" value=""/></td>
-							<td align="center"><i class="material-icons btn-delete" onclick="services.deleteService(this)">delete</i></td>
+							<!-- <td align="center"><i class="material-icons btn-delete" onclick="services.deleteService(this)">delete</i></td> -->
 						</tr>
 				    </c:forEach>
 				</c:if>
